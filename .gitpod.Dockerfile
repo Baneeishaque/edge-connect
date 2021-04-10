@@ -1,4 +1,4 @@
-FROM baneeishaque/gitpod-workspace-full-vnc-1366x768-tint2-pcmanfm-zsh-anaconda3-2020-11
+FROM baneeishaque/gitpod-full-1366x768-tint2-pcmanfm-zsh-android-studio-gh-chrome-idea-pycharm-anaconda3-2020-11
 
 RUN cd $HOME \
  && wget "https://raw.githubusercontent.com/Baneeishaque/edge-connect/master/environment.yml" \
