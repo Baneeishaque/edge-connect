@@ -31,10 +31,13 @@ class EdgeConnect():
 
         # test mode
         if self.config.MODE == 2:
-            self.test_dataset = Dataset(config, config.TEST_FLIST, config.TEST_EDGE_FLIST, config.TEST_MASK_FLIST, augment=False, training=False)
+            self.test_dataset = Dataset(config, config.TEST_FLIST, config.TEST_EDGE_FLIST, config.TEST_MASK_FLIST,
+                                        augment=False, training=False)
         else:
-            self.train_dataset = Dataset(config, config.TRAIN_FLIST, config.TRAIN_EDGE_FLIST, config.TRAIN_MASK_FLIST, augment=True, training=True)
-            self.val_dataset = Dataset(config, config.VAL_FLIST, config.VAL_EDGE_FLIST, config.VAL_MASK_FLIST, augment=False, training=True)
+            self.train_dataset = Dataset(config, config.TRAIN_FLIST, config.TRAIN_EDGE_FLIST, config.TRAIN_MASK_FLIST,
+                                         augment=True, training=True)
+            self.val_dataset = Dataset(config, config.VAL_FLIST, config.VAL_EDGE_FLIST, config.VAL_MASK_FLIST,
+                                       augment=False, training=True)
             self.sample_iterator = self.val_dataset.create_iterator(config.SAMPLE_SIZE)
 
         self.samples_path = os.path.join(config.PATH, 'samples')
@@ -89,7 +92,7 @@ class EdgeConnect():
             print('No training data was provided! Check \'TRAIN_FLIST\' value in the configuration file.')
             return
 
-        while(keep_training):
+        while (keep_training):
             epoch += 1
             print('\n\nTraining epoch: %d' % epoch)
 
@@ -179,17 +182,17 @@ class EdgeConnect():
                     self.edge_model.backward(e_gen_loss, e_dis_loss)
                     iteration = self.inpaint_model.iteration
 
-
                 if iteration >= max_iteration:
                     keep_training = False
                     break
 
                 logs = [
-                    ("epoch", epoch),
-                    ("iter", iteration),
-                ] + logs
+                           ("epoch", epoch),
+                           ("iter", iteration),
+                       ] + logs
 
-                progbar.add(len(images), values=logs if self.config.VERBOSE else [x for x in logs if not x[0].startswith('l_')])
+                progbar.add(len(images),
+                            values=logs if self.config.VERBOSE else [x for x in logs if not x[0].startswith('l_')])
 
                 # log model at checkpoints
                 if self.config.LOG_INTERVAL and iteration % self.config.LOG_INTERVAL == 0:
@@ -288,7 +291,6 @@ class EdgeConnect():
                 i_logs.append(('psnr', psnr.item()))
                 i_logs.append(('mae', mae.item()))
                 logs = e_logs + i_logs
-
 
             logs = [("it", iteration), ] + logs
             progbar.add(len(images), values=logs)
@@ -391,9 +393,8 @@ class EdgeConnect():
             self.postprocess(edges),
             self.postprocess(outputs),
             self.postprocess(outputs_merged),
-            img_per_row = image_per_row
+            img_per_row=image_per_row
         )
-
 
         path = os.path.join(self.samples_path, self.model_name)
         name = os.path.join(path, str(iteration).zfill(5) + ".png")

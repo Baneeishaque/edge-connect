@@ -106,3 +106,7 @@ ENV/
 results
 # checkpoints
 datasets
+
+compositeImage_01.png
+invertedBinaryDepthMapImageWithClosingOpeningAndErosion_01.png
+checkpoints/places2/config.yml
