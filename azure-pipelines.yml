@@ -64,8 +64,7 @@ steps:
 #     condition: eq(variables.CONDA_CACHE_RESTORED, 'false')
   
   - script: |
-      CALL conda.bat activate
-      conda activate edge-connect
+      CALL conda.bat activate edge-connect
       python test.py --checkpoints ./checkpoints/places2 --input ./examples/places2/images --mask ./examples/places2/masks --output ./checkpoints/results
     displayName: Run test.py on Windows
     condition: eq( variables['Agent.OS'], 'Windows_NT' )
