@@ -66,7 +66,7 @@ steps:
     condition: eq( variables['Agent.OS'], 'Windows_NT' )
     
   - script: |
-      conda init bash
+      eval "$(conda shell.bash hook)"
       conda activate edge-connect
       python test.py --checkpoints ./checkpoints/places2 --input ./examples/places2/images --mask ./examples/places2/masks --output ./checkpoints/results
     displayName: Run test.py on Unix
