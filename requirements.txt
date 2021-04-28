@@ -3,3 +3,4 @@ opencv
 torchvision
 pyaml
 scikit-image
+pylint

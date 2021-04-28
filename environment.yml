@@ -1,8 +1,4 @@
 name: edge-connect
-channels:
-  - pytorch
-  - conda-forge
-  - defaults
 dependencies:
   - python=3.7
   - scipy=1.2.1
@@ -10,3 +6,4 @@ dependencies:
   - torchvision
   - pyaml
   - scikit-image
+  - pylint
