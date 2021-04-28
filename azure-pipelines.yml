@@ -62,9 +62,13 @@ steps:
   - script: conda env create --file environment.yml
     displayName: Create Anaconda environment
 #     condition: eq(variables.CONDA_CACHE_RESTORED, 'false')
-  
+
+  - script: conda init cmd.exe
+    displayName: Configure shell for Anaconda environment on Windows
+    condition: eq( variables['Agent.OS'], 'Windows_NT' )
+    
   - script: |
-      CALL conda activate edge-connect
+      conda activate edge-connect
       python test.py --checkpoints ./checkpoints/places2 --input ./examples/places2/images --mask ./examples/places2/masks --output ./checkpoints/results
     displayName: Run test.py on Windows
     condition: eq( variables['Agent.OS'], 'Windows_NT' )
