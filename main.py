@@ -1,10 +1,12 @@
+import argparse
 import os
-import cv2
 import random
+from shutil import copyfile
+
+import cv2
 import numpy as np
 import torch
-import argparse
-from shutil import copyfile
+
 from src.config import Config
 from src.edge_connect import EdgeConnect
 

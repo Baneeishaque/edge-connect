@@ -77,7 +77,6 @@ class StyleLoss(nn.Module):
         return style_loss
 
 
-
 class PerceptualLoss(nn.Module):
     r"""
     Perceptual loss, VGG-based
@@ -102,9 +101,7 @@ class PerceptualLoss(nn.Module):
         content_loss += self.weights[3] * self.criterion(x_vgg['relu4_1'], y_vgg['relu4_1'])
         content_loss += self.weights[4] * self.criterion(x_vgg['relu5_1'], y_vgg['relu5_1'])
 
-
         return content_loss
-
 
 
 class VGG19(torch.nn.Module):

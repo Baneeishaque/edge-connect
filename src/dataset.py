@@ -1,15 +1,17 @@
-import os
 import glob
+import os
+import random
+
+import numpy as np
 import scipy
 import torch
-import random
-import numpy as np
 import torchvision.transforms.functional as F
-from torch.utils.data import DataLoader
 from PIL import Image
 from scipy.misc import imread
-from skimage.feature import canny
 from skimage.color import rgb2gray, gray2rgb
+from skimage.feature import canny
+from torch.utils.data import DataLoader
+
 from .utils import create_mask
 
 
@@ -139,7 +141,7 @@ class Dataset(torch.utils.data.Dataset):
             mask_index = random.randint(0, len(self.mask_data) - 1)
             mask = imread(self.mask_data[mask_index])
             mask = self.resize(mask, imgh, imgw)
-            mask = (mask > 0).astype(np.uint8) * 255       # threshold due to interpolation
+            mask = (mask > 0).astype(np.uint8) * 255  # threshold due to interpolation
             return mask
 
         # test mode: load mask non random

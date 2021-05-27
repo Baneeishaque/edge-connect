@@ -6,6 +6,7 @@ class EdgeAccuracy(nn.Module):
     """
     Measures the accuracy of the edge map
     """
+
     def __init__(self, threshold=0.5):
         super(EdgeAccuracy, self).__init__()
         self.threshold = threshold

@@ -27,20 +27,20 @@ import os
 import pathlib
 from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 
-import torch
 import numpy as np
-from scipy.misc import imread
+import torch
 from scipy import linalg
+from scipy.misc import imread
 from torch.autograd import Variable
 from torch.nn.functional import adaptive_avg_pool2d
 
 from inception import InceptionV3
 
-
 parser = ArgumentParser(formatter_class=ArgumentDefaultsHelpFormatter)
 parser.add_argument('--path', type=str, nargs=2, help=('Path to the generated images or to .npz statistic files'))
 parser.add_argument('--batch-size', type=int, default=64, help='Batch size to use')
-parser.add_argument('--dims', type=int, default=2048, choices=list(InceptionV3.BLOCK_INDEX_BY_DIM), help=('Dimensionality of Inception features to use. By default, uses pool3 features'))
+parser.add_argument('--dims', type=int, default=2048, choices=list(InceptionV3.BLOCK_INDEX_BY_DIM),
+                    help=('Dimensionality of Inception features to use. By default, uses pool3 features'))
 parser.add_argument('-c', '--gpu', default='', type=str, help='GPU to use (leave blank for CPU only)')
 
 

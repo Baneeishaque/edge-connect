@@ -1,11 +1,13 @@
 import os
-from shutil import copyfile
-from src.config import Config
-from src.edge_connect import EdgeConnect
-import cv2
 import random
+from shutil import copyfile
+
+import cv2
 import numpy as np
 import torch
+
+from src.config import Config
+from src.edge_connect import EdgeConnect
 
 # Default Config. on places2
 places2CheckPointsPath = './checkpoints/places2'

@@ -1,9 +1,10 @@
 import os
+import random
 import sys
 import time
-import random
-import numpy as np
+
 import matplotlib.pyplot as plt
+import numpy as np
 from PIL import Image
 
 
@@ -25,7 +26,8 @@ def stitch_images(inputs, *outputs, img_per_row=2):
     columns = len(outputs) + 1
 
     width, height = inputs[0][:, :, 0].shape
-    img = Image.new('RGB', (width * img_per_row * columns + gap * (img_per_row - 1), height * int(len(inputs) / img_per_row)))
+    img = Image.new('RGB',
+                    (width * img_per_row * columns + gap * (img_per_row - 1), height * int(len(inputs) / img_per_row)))
     images = [inputs, *outputs]
 
     for ix in range(len(inputs)):

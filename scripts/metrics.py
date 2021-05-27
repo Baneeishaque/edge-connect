@@ -1,13 +1,13 @@
-import numpy as np
 import argparse
-import matplotlib.pyplot as plt
-
 from glob import glob
 from ntpath import basename
+
+import matplotlib.pyplot as plt
+import numpy as np
 from scipy.misc import imread
-from skimage.measure import compare_ssim
-from skimage.measure import compare_psnr
 from skimage.color import rgb2gray
+from skimage.measure import compare_psnr
+from skimage.measure import compare_ssim
 
 
 def parse_args():
